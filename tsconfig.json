@@ -1,0 +1,38 @@
+{
+    "files": [],
+    "compileOnSave": false,
+    "compilerOptions": {
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noImplicitOverride": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "esModuleInterop": true,
+        "sourceMap": true,
+        "declaration": false,
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "target": "ES2022",
+        "module": "ES2022",
+        "useDefineForClassFields": false,
+        "lib": [
+            "ES2022",
+            "dom"
+        ],
+        "allowJs": true,
+        "allowUmdGlobalAccess": true
+    },
+    "references": [
+        { "path": "./ipc-types" },   // 引用 ipc-types 專案
+        { "path": "./electron-src" } // 引用 electron-src 專案
+    ],
+    "angularCompilerOptions": {
+        "enableI18nLegacyMessageIdFormat": false,
+        "strictInjectionParameters": true,
+        "strictInputAccessModifiers": true,
+        "strictTemplates": true,
+        "allowJs": true
+    }
+}
