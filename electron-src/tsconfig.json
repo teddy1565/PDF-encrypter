@@ -1,0 +1,38 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "lib": ["ES2021"],
+        "allowJs": true,
+        "module": "commonjs",
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "noImplicitAny": true,
+        "sourceMap": true,
+        "baseUrl": "./",
+        "outDir": "../dist",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "types": ["node"],
+        "allowUmdGlobalAccess": true,
+        // "strict": true,
+        // "strictFunctionTypes": true,
+        // "strictNullChecks": true,
+        // "strictPropertyInitialization": true,
+        // "noImplicitThis": true,
+        // "noImplicitReturns": true,
+        // "noUnusedParameters": true,
+        "noImplicitOverride": true,
+        // "forceConsistentCasingInFileNames": true,
+        "paths": {
+            "*": [
+                "node_modules/*"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

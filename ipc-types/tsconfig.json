@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2021", "DOM"],
+    "allowJs": true,
+    "target": "ES6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "types": ["node"],
+    "sourceMap": true,
+    "composite": true,      // 必須！表示此專案可被引用
+    "declaration": true,    // 必須！產生 .d.ts 檔案供其他專案使用
+    "declarationMap": true, // 建議！方便追蹤到原始碼
+    "outDir": "dist",       // 編譯輸出目錄
+    "rootDir": "src"        // 原始碼根目錄
+  },
+  "include": ["src/**/*"] // 只包含自己的原始碼
+}

@@ -1,0 +1,46 @@
+.te-nav-bar {
+    border-radius: 0% 0% 1rem 1rem;
+}
+
+.fashion-logo {
+    user-select: none; /* standard syntax */
+    -webkit-user-select: none; /* for Chrome、Safari */
+    -moz-user-select: none;  /* for Mozilla、Firefox */
+    position: absolute;
+    top: 0.1rem;
+    left: 3rem;
+    z-index: 0;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scroll-bar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scroll-bar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+
+.orbitron-clock {
+    user-select: none; /* standard syntax */
+    -webkit-user-select: none; /* for Chrome、Safari */
+    -moz-user-select: none;  /* for Mozilla、Firefox */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #17D4FE;
+    font-size: 3rem;
+    font-family: Orbitron;
+    font-optical-sizing: auto;
+    font-style: normal;
+    letter-spacing: 0.5rem;
+}
+
+
+.te-background-color {
+    background-color: #141820;
+}

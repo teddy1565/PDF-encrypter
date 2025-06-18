@@ -1,0 +1,47 @@
+<div class="container-fluid align-items-center">
+    <div class="row align-items-center" style="height: 100vh;">
+        <div class="col col-12">
+            <div class="row justify-content-center">
+                <div class="col col-8">
+                    <h3>PDF Path</h3>
+                    <h5 style="color: orange;">{{ pdf_file_path === "" ? "NULL" : pdf_file_path }}</h5>
+                    <br>
+                    <h3>Sqrt TXT Path</h3>
+                    <h5 style="color: orange;">{{ sqrt_txt_file_path === "" ? "NULL" : sqrt_txt_file_path }}</h5>
+                    <br>
+                    <h3>Output Path</h3>
+                    <h5 style="color: orange;">{{ output_dir_path === "" ? "NULL" : output_dir_path }}</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-4" style="text-align: center;">
+                    <button class="btn btn-secondary" id="SelectPDF" (click)="select_pdf()">Select PDF file</button>
+                </div>
+                <div class="col col-4" style="text-align: center;">
+                    <button class="btn btn-secondary" id="SelectSqrtText" (click)="select_sqrt_text()">Sqrt Text Data</button>
+                </div>
+                <div class="col col-4" style="text-align: center;">
+                    <button class="btn btn-secondary" id="SelectOutputDir" (click)="select_output_dir()">Select Output Dir</button>
+                </div>
+            </div>
+
+            <br><br>
+
+            <div class="row" style="text-align: center;">
+                <div class="col-12" style="text-align: center;">
+                    <button class="btn btn-secondary" id="ExecutionEncrypt" (click)="exec_encrypt()" [disabled]=" sqrt_txt_file_path === '' || pdf_file_path === '' || output_dir_path === ''">Exec Encrypt</button>
+                </div>
+            </div>
+
+            <br>
+
+            <div id="changeEncode" class="dropdown" style="text-align: center;">
+                <select class="form-select" aria-label="EncodeSelect" [(ngModel)]="encode_type">
+                    <ng-container *ngFor="let encode_type_item of encode_types">
+                        <option [value]="encode_type_item[0]">{{ encode_type_item[1] }}</option>
+                    </ng-container>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
