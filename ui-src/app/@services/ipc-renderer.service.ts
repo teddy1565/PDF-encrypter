@@ -16,7 +16,7 @@ declare global {
     providedIn: "root"
 })
 
-export class IPCRendererService<L extends string = string> {
+export class IPCRendererService {
 
     private _destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
