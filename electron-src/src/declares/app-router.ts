@@ -6,11 +6,18 @@ import {
     BrowserWindow
 } from "electron";
 
+const qpdf = require("node-qpdf");
+import fs from "fs";
+import path from "path";
+import os from "os";
+
 import { ElectronIpcMainRouter } from "./electron-ipc-route.declare"; // Adjust path as needed
 
 import {
     EncodeType
 } from "../shared-types/src/encode-type";
+
+
 
 export class AppRouter implements ElectronIpcMainRouter {
 
@@ -84,7 +91,38 @@ export class AppRouter implements ElectronIpcMainRouter {
         // Here you would implement the encryption logic
         // For now, we just return true to indicate success
         console.log(`Encrypting PDF: ${pdf_file_path}, SQRT TXT: ${sqrt_txt_file_path}, Output Dir: ${output_dir_path}, Encode Type: ${encode_type}`);
-        return Promise.resolve(true);
+
+        let password: string = "";
+        try {
+            // eslint-disable-next-line no-sync
+            const txt = fs.readFileSync(sqrt_txt_file_path, "utf-8").split(os.EOL)[0];
+            if (typeof txt !== "string") {
+                throw new Error("Invalid SQRT TXT file format");
+            }
+            console.log(txt);
+            password = txt;
+        } catch (error) {
+            console.error("Error reading SQRT TXT file:", error);
+            return Promise.resolve(false);
+        }
+
+        return qpdf.encrypt(pdf_file_path, {
+            keyLength: 128,
+            outputFile: path.join(output_dir_path, path.basename(pdf_file_path)),
+            password: password,
+            restrictions: {
+                print: "full",
+                useAes: "y",
+                extract: "y"
+
+            }
+        }).then(() => {
+            console.log("Encryption successful");
+            return true;
+        }).catch((error: any) => {
+            console.error("Encryption failed:", error);
+            return false;
+        });
     }
 
 }

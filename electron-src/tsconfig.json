@@ -12,6 +12,8 @@
         "outDir": "../dist",
         "moduleResolution": "node",
         "resolveJsonModule": true,
+        "types": ["node"],
+        "allowUmdGlobalAccess": true,
         // "strict": true,
         // "strictFunctionTypes": true,
         // "strictNullChecks": true,
