@@ -27,4 +27,16 @@ export class MainPageComponent implements OnInit, OnDestroy {
 
     public ngOnDestroy() {
     }
+
+    protected select_pdf(): void {
+
+    }
+
+    protected select_sqrt_text(): void {
+
+    }
+
+    protected exec_encrypt(): void {
+
+    }
 }

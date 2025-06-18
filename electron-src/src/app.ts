@@ -88,8 +88,8 @@ const createWindow = (): void => {
     const externalDisplay = displays.find((display) => display.bounds.x !== 0 || display.bounds.y !== 0);
     // Create the browser window.
     const mainWindow = new BrowserWindow({
-        width: 1920,
-        height: 1080,
+        width: 800,
+        height: 600,
         x: externalDisplay ? (externalDisplay.bounds.x + 50) : undefined,
         y: externalDisplay ? (externalDisplay.bounds.y + 50) : undefined,
         frame: true,
@@ -116,7 +116,7 @@ const createWindow = (): void => {
     // and load the index.html of the app.
     mainWindow.loadFile(entryPointWindowURL);
 
-    mainWindow.maximize();
+    // mainWindow.maximize();
     // mainWindow.resizable = false;
     // mainWindow.movable = false;
     mainWindow.show();
