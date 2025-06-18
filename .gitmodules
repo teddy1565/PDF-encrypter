@@ -1,0 +1,6 @@
+[submodule "ui-src/app/shared-types"]
+	path = ui-src/app/shared-types
+	url = https://github.com/teddy1565/PDF-encrypter-types.git
+[submodule "electron-src/src/shared-types"]
+	path = electron-src/src/shared-types
+	url = https://github.com/teddy1565/PDF-encrypter-types.git
