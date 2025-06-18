@@ -3,11 +3,12 @@ import { Injectable, OnInit, Inject, Optional } from "@angular/core";
 import { switchMap, distinctUntilChanged, catchError, map } from "rxjs/operators";
 import { forkJoin, of, takeUntil, ReplaySubject, Observable, lastValueFrom, from, mergeMap, share  } from "rxjs";
 
-import { IPCRenderer, Params, IPCValidChannel } from "../../../ipc-types/ipc.model";
+import { IPCRenderer, Params } from "../shared-types/src/ipc";
+import { IPCValidChannel } from "../shared-types/src/ipc-valid-channel";
 
 declare global {
     interface Window {
-        ipcRenderer: IPCRenderer<IPCValidChannel<string>>;
+        ipcRenderer: IPCRenderer<IPCValidChannel>;
     }
 }
 
@@ -19,14 +20,14 @@ export class IPCRendererService<L extends string = string> {
 
     private _destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
-    private readonly receive_map: Map<IPCValidChannel<L>, Observable<any>> = new Map<IPCValidChannel<L>, Observable<any>>();
+    private readonly receive_map: Map<IPCValidChannel, Observable<any>> = new Map<IPCValidChannel, Observable<any>>();
 
     constructor() {
 
     }
 
-    public send<T=never|undefined>(channel: IPCValidChannel<L>): void;
-    public send<T extends any[]>(channel: IPCValidChannel<L>, ...data: T): void;
+    public send<T=never|undefined>(channel: IPCValidChannel): void;
+    public send<T extends any[]>(channel: IPCValidChannel, ...data: T): void;
     public send<T extends any[]>(...args: T): void {
         // eslint-disable-next-line no-undef
         if (window.ipcRenderer && window.ipcRenderer.send) {
@@ -44,7 +45,7 @@ export class IPCRendererService<L extends string = string> {
         }
     }
 
-    public invoke<P extends any[], R>(channel: IPCValidChannel<L>, ...args: P): Promise<R> {
+    public invoke<P extends any[], R>(channel: IPCValidChannel, ...args: P): Promise<R> {
         return new Promise((resolve, reject) => {
             // eslint-disable-next-line no-undef
             if (window.ipcRenderer && window.ipcRenderer.invoke) {
@@ -61,7 +62,7 @@ export class IPCRendererService<L extends string = string> {
         });
     }
 
-    public receive<T>(channel: IPCValidChannel<L>): Observable<T> {
+    public receive<T>(channel: IPCValidChannel): Observable<T> {
         if (this.receive_map.has(channel)) {
             return this.receive_map.get(channel) as Observable<T>;
         }

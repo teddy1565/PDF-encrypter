@@ -5,11 +5,11 @@ import { contextBridge, ipcRenderer } from "electron";
 
 import {
     IPCRenderer
-} from "./ipc-types/ipc.model";
+} from "./shared-types/src/ipc";
 
 import {
     IPCValidChannel
-} from "./ipc-types/ipc-valid-channel";
+} from "./shared-types/src/ipc-valid-channel";
 
 ipcRenderer.setMaxListeners(Infinity);
 
@@ -17,6 +17,7 @@ ipcRenderer.setMaxListeners(Infinity);
  * 這裡必須要手動一個一個定義，因exposeInMainWorld在預設情況下，如果有參考外部的資料，會被視為不安全，進而被阻擋。
  */
 const valid_IPC_channels: Array<IPCValidChannel> = [
+    "startup_test"
 ];
 
 contextBridge.exposeInMainWorld(

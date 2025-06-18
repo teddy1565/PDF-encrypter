@@ -98,7 +98,7 @@ const createWindow = (): void => {
         },
 
         // windows 小按鈕
-        closable: false,    // 是否可以關閉
+        closable: true,    // 是否可以關閉
         minimizable: true,  // 是否可以最小化
         maximizable: true,      // 是否可以最大化
         fullscreenable: true,   // 是否可以全螢幕 (就是全螢幕的按鈕)

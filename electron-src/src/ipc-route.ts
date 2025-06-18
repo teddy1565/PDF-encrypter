@@ -15,40 +15,25 @@ import path from "path";
 import os from "os";
 
 import {
-    IElectronIpcMainRouter
-} from  "./ipc-types/electron-ipc-main";
-
-import {
-    IPCValidChannel
-} from "ipc-valid-channel";
+    AppRouter
+} from  "./declares/app-router";
 
 import {
     IPCMainOverwrite
-} from "electron-ipc";
+} from "./declares/ipc-main-overwrite.declare";
 
+import {
+    IPCValidChannel
+} from "./shared-types/src/ipc-valid-channel";
 
-class AppRouter implements IElectronIpcMainRouter {
-
-
-    public static create_router(): AppRouter {
-        return new AppRouter();
-    }
-
-    private constructor() {
-    }
-
-    bootup(_ev: IpcMainInvokeEvent) {
-        return "pong";
-    }
-}
 
 export class IPCRoute {
     private ipc: IPCMainOverwrite;
 
     private router: AppRouter;
 
-    public static async create_ipc_router(ipc: IpcMain, force_init: boolean = false): Promise<IPCRoute> {
-        const router = await AppRouter.create_router();
+    public static create_ipc_router(ipc: IpcMain, force_init: boolean = false): IPCRoute {
+        const router = AppRouter.create_router();
         return new IPCRoute(ipc, router);
     }
 
@@ -57,7 +42,7 @@ export class IPCRoute {
     private constructor(_parent_ipc: IpcMain, router: AppRouter) {
         this.ipc = new IPCMainOverwrite(_parent_ipc);
         this.router = router;
-        this.ipc.handle("boot_up", router.bootup);
+        this.ipc.handle("startup_test", router.startup_test);
 
     }
 
