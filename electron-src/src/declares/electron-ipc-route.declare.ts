@@ -4,10 +4,22 @@ import {
 } from "electron";
 
 import {
-    startup_test
+    startup_test,
+    select_output_dir,
+    select_pdf_file,
+    select_sqrt_txt_file,
+    exec_encrypt
 } from "../shared-types/src/ipc-route.declare";
+
+import {
+    EncodeType
+} from "../shared-types/src/encode-type";
 
 
 export interface ElectronIpcMainRouter {
     startup_test: startup_test<IpcMainInvokeEvent>;
+    select_output_dir: select_output_dir<IpcMainInvokeEvent>;
+    select_pdf_file: select_pdf_file<IpcMainInvokeEvent>;
+    select_sqrt_txt_file: select_sqrt_txt_file<IpcMainInvokeEvent>;
+    exec_encrypt: exec_encrypt<IpcMainInvokeEvent, keyof EncodeType>;
 }

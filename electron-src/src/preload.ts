@@ -17,7 +17,10 @@ ipcRenderer.setMaxListeners(Infinity);
  * 這裡必須要手動一個一個定義，因exposeInMainWorld在預設情況下，如果有參考外部的資料，會被視為不安全，進而被阻擋。
  */
 const valid_IPC_channels: Array<IPCValidChannel> = [
-    "startup_test"
+    "select_pdf_file",
+    "select_sqrt_txt_file",
+    "select_output_dir",
+    "exec_encrypt"
 ];
 
 contextBridge.exposeInMainWorld(

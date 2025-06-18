@@ -42,8 +42,12 @@ export class IPCRoute {
     private constructor(_parent_ipc: IpcMain, router: AppRouter) {
         this.ipc = new IPCMainOverwrite(_parent_ipc);
         this.router = router;
-        this.ipc.handle("startup_test", router.startup_test);
 
+
+        this.ipc.handle("select_pdf_file", router.select_pdf_file);
+        this.ipc.handle("select_sqrt_txt_file", router.select_sqrt_txt_file);
+        this.ipc.handle("select_output_dir", router.select_output_dir);
+        this.ipc.handle("exec_encrypt", router.exec_encrypt);
     }
 
     public handle(channel: IPCValidChannel, callback: <T extends IpcMainInvokeEvent>(_ev: T, ...args: any[]) => any): void {
