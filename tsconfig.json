@@ -1,7 +1,7 @@
 {
-    "files": [],
     "compileOnSave": false,
     "compilerOptions": {
+        "outDir": "./dist/out-tsc",
         "forceConsistentCasingInFileNames": true,
         "strict": true,
         "noImplicitOverride": true,
@@ -24,10 +24,6 @@
         "allowJs": true,
         "allowUmdGlobalAccess": true
     },
-    "references": [
-        { "path": "./ipc-types" },   // 引用 ipc-types 專案
-        { "path": "./electron-src" } // 引用 electron-src 專案
-    ],
     "angularCompilerOptions": {
         "enableI18nLegacyMessageIdFormat": false,
         "strictInjectionParameters": true,

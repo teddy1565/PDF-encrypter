@@ -1,26 +1,29 @@
 {
     "compilerOptions": {
         "target": "ES6",
-        "lib": ["ES2021", "DOM"],
+        "lib": ["ES2021"],
         "allowJs": true,
         "module": "commonjs",
+        "skipLibCheck": true,
         "esModuleInterop": true,
         "noImplicitAny": true,
-        "baseUrl": "./src",
+        "sourceMap": true,
+        "baseUrl": "./",
         "outDir": "../dist",
         "moduleResolution": "node",
         "resolveJsonModule": true,
-        "sourceMap": true,
-        "declaration": true,
-        "declarationMap": true,
-        "types": ["node"],
+        // "strict": true,
+        // "strictFunctionTypes": true,
+        // "strictNullChecks": true,
+        // "strictPropertyInitialization": true,
+        // "noImplicitThis": true,
+        // "noImplicitReturns": true,
+        // "noUnusedParameters": true,
         "noImplicitOverride": true,
+        // "forceConsistentCasingInFileNames": true,
         "paths": {
             "*": [
                 "node_modules/*"
-            ],
-            "ipc-types/*": [
-                "../../ipc-types/src/*"
             ]
         }
     },
@@ -29,9 +32,5 @@
     ],
     "exclude": [
         "node_modules"
-    ],
-    "references": [
-        // 聲明此專案依賴 ipc-types 專案
-        { "path": "../ipc-types" }
     ]
 }

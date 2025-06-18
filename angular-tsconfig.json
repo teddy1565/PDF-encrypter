@@ -25,9 +25,6 @@
         "allowJs": true,
         "allowUmdGlobalAccess": true
     },
-    "references": [
-        { "path": "./ipc-types/ipc.model.ts" }
-    ],
     "angularCompilerOptions": {
         "enableI18nLegacyMessageIdFormat": false,
         "strictInjectionParameters": true,
