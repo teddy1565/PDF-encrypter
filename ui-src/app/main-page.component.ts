@@ -100,6 +100,19 @@ export class MainPageComponent implements OnInit, OnDestroy {
     }
 
     protected exec_encrypt(): void {
-
+        this.operate_service.exec_encrypt(
+            this.pdf_file_path,
+            this.sqrt_txt_file_path,
+            this.output_dir_path,
+            this.encode_type
+        ).pipe(
+            takeUntil(this._destroyed$),
+        ).subscribe((result) => {
+            if (result) {
+                console.log("Encryption completed successfully.");
+            } else {
+                console.error("Encryption failed.");
+            }
+        });
     }
 }
